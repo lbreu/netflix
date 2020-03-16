@@ -7,19 +7,14 @@ import com.lbreu.auth.utils.DBServiceUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.core.Response;
 import java.math.BigInteger;
 import java.util.List;
-import java.util.regex.Pattern;
 
 @Component
 public class AuthenticationServiceOperation {
-
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
 
     @Autowired
     private DBServiceUtil dbServiceUtil;

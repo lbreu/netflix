@@ -38,4 +38,9 @@ public class User {
         this.priv_cred = priv_cred;
     }
 
+    @Override
+    public String toString() {
+        return "id: " + this.getId() + " pub_cred: " + this.getPub_cred();
+    }
+
 }

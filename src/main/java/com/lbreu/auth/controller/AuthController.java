@@ -7,6 +7,7 @@ import com.lbreu.auth.exceptions.UnauthorizedException;
 import com.lbreu.auth.responses.AuthenticationResponse;
 import com.lbreu.auth.serviceoperation.AuthenticationServiceOperation;
 import com.lbreu.auth.serviceoperation.CreationServiceOperation;
+import com.lbreu.auth.serviceoperation.RetrievalServiceOperation;
 import com.lbreu.auth.utils.AuthResponseHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +29,9 @@ public class AuthController {
 
     @Autowired
     CreationServiceOperation creationServiceOperation;
+
+    @Autowired
+    RetrievalServiceOperation retrievalServiceOperation;
 
     private static final Logger log = LoggerFactory.getLogger(AuthController.class);
 
@@ -159,6 +163,26 @@ public class AuthController {
         Response response = Response.status(authResponse.getStatus()).entity(authResponse.getToken()).build();
         log.info("Exiting create device");
         return response;
+    }
+
+    /**
+     * Gets the user associated with the token.
+     *
+     * @param token
+     */
+    @RequestMapping(value = "user/get", method = RequestMethod.GET, params = {"token"})
+    String getUser(@RequestParam(value = "token") String token) {
+        return retrievalServiceOperation.retrieveUser(token);
+    }
+
+    /**
+     * Gets the user associated with the token.
+     *
+     * @param token
+     */
+    @RequestMapping(value = "device/get", method = RequestMethod.GET, params = {"token"})
+    String getDevices(@RequestParam(value = "token") String token) {
+        return retrievalServiceOperation.retrieveDevices(token);
     }
 
 

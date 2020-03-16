@@ -47,4 +47,9 @@ public class Device {
         this.token = token;
     }
 
+    @Override
+    public String toString() {
+        return "device_id: " + this.getDevice_id() + " user_id: " + this.getUser_id();
+    }
+
 }

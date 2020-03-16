@@ -22,6 +22,8 @@ After a user is authenticated, they can use a token, returned in the `user/auth`
 I included two other endpoints, `user/create` and `device/create` to help demonstrate the system's capabilities.
 `user/create` takes publicCredential and privateCredential as params and `device/create` takes in deviceId as the param.
 
+For the case of a "user-less device" such as a floor room model, they can authenticate with the pre-set public credential: "default" private credential: "password" pair.
+
 All endpoints are POSTs as we are writing data to be processed.
 
 I have included various sequence diagrams and other sketches to give an idea of how my design evolved.

@@ -47,7 +47,7 @@ public class DBServiceUtil {
     }
 
     /**
-     * Get the list of devices that have the given deviceId and userId
+     * Get the list of devices that have the given deviceId
      *
      * @param deviceId
      * @return
@@ -113,5 +113,40 @@ public class DBServiceUtil {
     public void createDevice(BigInteger deviceId, String token ) {
         jdbcTemplate.execute("INSERT INTO device (device_id, status, token) VALUES ("+ deviceId +",\'A\', \'"+ token  +"\')");
     }
+
+    public List<User> retrieveUserWithId(BigInteger userId) {
+        List<User> users = jdbcTemplate.query("SELECT * FROM user WHERE id = \'"+ userId +"\'", new UserMapper());
+        return users;
+    }
+
+    /**
+     * Get the list of users that are associated with the given userId.
+     *
+     * @param userId
+     * @return user
+     */
+    public List<User> getUser(BigInteger userId) {
+        log.info("get user");
+
+        List<User> listOfUsers = jdbcTemplate.query("SELECT * FROM user WHERE id = \'" + userId + "\'", new UserMapper());
+
+        return listOfUsers;
+    }
+
+    /**
+     * Get the list of devices that have the userId
+     *
+     * Note: this may return more then one device.
+     *
+     * @param userId
+     * @return devices
+     */
+    public List<Device> getDeviceWithUserId(BigInteger userId) {
+        log.info("get device with user id");
+        List<Device> listOfDevices = jdbcTemplate.query("SELECT * FROM device WHERE user_id = "+ userId,  new DeviceMapper());
+
+        return listOfDevices;
+    }
+
 
 }

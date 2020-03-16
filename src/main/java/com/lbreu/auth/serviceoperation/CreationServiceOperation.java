@@ -19,11 +19,23 @@ public class CreationServiceOperation {
 
     private static final Logger log = LoggerFactory.getLogger(CreationServiceOperation.class);
 
+    /**
+     * Create a user with the given public and private credentials.
+     *
+     * @param publicCredential
+     * @param privateCredential
+     */
     public void createUser(String publicCredential, String privateCredential) {
         dbServiceUtil.createUser(publicCredential, privateCredential);
         log.info("user created");
     }
 
+    /**
+     * Creates a device with the given device id.
+     *
+     * @param deviceId
+     * @return
+     */
     public AuthenticationResponse createDevice(String deviceId) {
         BigInteger dId;
         AuthenticationResponse response = new AuthenticationResponse();
