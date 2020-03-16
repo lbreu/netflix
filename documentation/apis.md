@@ -35,4 +35,13 @@
 |---------------|:--------------:|--------------:|
 | Creates a device with the given device id |  /device/create | deviceId (the unique device identifier) | 
 
+#### GET `http://localhost:8080/user/get?token=<token>`
+| Description   |      Path      |  Query Params |
+|---------------|:--------------:|--------------:|
+| Returns the authenticated user's user id and public credential |  /user/get | token (user's token) | 
+
+#### POST `http://localhost:8080/device/get?token=<token>`
+| Description   |      Path      |  Query Params |
+|---------------|:--------------:|--------------:|
+| Returns all the devices associated with the authenticated user |  /device/get | token (user's token) | 
 
